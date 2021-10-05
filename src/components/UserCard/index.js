@@ -1,9 +1,11 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { changeName } from "../../store/modules/user/action";
 
 const UserCard = () => {
     const dispatch = useDispatch();
+
+    const user = useSelector(store => store.user)
 
     const [name, setName] = useState("");
 
@@ -16,7 +18,7 @@ const UserCard = () => {
             <input type="text" value={name} onChange={e => setName(e.target.value)} />
             <button onClick={handleClick} >Change</button>
             <hr />
-            <h1>{name}</h1>
+            <h1>{user}</h1>
         </div>
     )
 }
